@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+
+
+const initialState = false
+
 
 function App() {
+
+  const [toggleText, setToggleText] = useState(initialState)
+
+  function onToggle(){
+    setToggleText(!toggleText)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+       <h1>useState Hook</h1>
+       <div>
+        {
+          toggleText ?
+          <p>Hello World</p>
+          : ''
+        }
+        <button onClick={onToggle}>Toggle here</button>
+       </div>
+       </div>
+       <div className="Basic">
+        <input type='text' name="name" placeholder="Enter Name" ></input>
+        <select name="city">
+          <option value={''} id="">
+            Select City
+          </option>
+          <option value={"Bengaluru"} id="bengaluru">
+            Bengaluru
+          </option>
+
+        </select>
+       </div>
     </div>
   );
 }
